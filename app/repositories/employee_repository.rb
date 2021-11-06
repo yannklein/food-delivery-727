@@ -12,6 +12,15 @@ class EmployeeRepository
     @employees.find { |employee| employee.username == username }
   end
 
+  def find(id)
+    @employees.find { |employee| employee.id == id }
+  end
+
+  def all_riders
+    @employees.reject { |employee| employee.manager? }
+  end
+
+
   private
 
   def load_csv
